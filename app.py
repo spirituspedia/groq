@@ -26,8 +26,10 @@ class Message:
 load_dotenv()
 
 ##load the GROQ and OpenAI API KEY
-os.environ['OPENAI_API_KEY']=os.getenv("OPENAI_API_KEY")
-groq_api_key=os.getenv('GROQ_API_KEY')
+#os.environ['OPENAI_API_KEY']=os.getenv("OPENAI_API_KEY")
+#groq_api_key=os.getenv('GROQ_API_KEY')
+os.environ['OPENAI_API_KEY']=st.secrets["OPENAI_API_KEY"]
+groq_api_key=st.secrets['GROQ_API_KEY']
 
 # Opções de modelos disponíveis
 model_options = ["LLama3-8b-8192", "Gemma-7b-It", "Llama3-70b-8192", "Mixtral-8x7b-32768"]
@@ -39,7 +41,8 @@ If you don't know the answer, then say "I don't know", but in the same language 
 <context>
 {context}
 <context>
-Question: {input}
+Question:
+{input} 
 """
 
 def vector_embedding():
